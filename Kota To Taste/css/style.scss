@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@200;400&family=Roboto:ital,wght@0,100;0,300;1,100;1,300;1,400&family=Ubuntu:ital,wght@0,300;0,400;1,300;1,400&display=swap');$yellow:#edc73b;
+$white:#fff;
+$black:#000;
+$light-color:#aaa;
+$border:.2rem solid rgba(255,255,255,.3);
+
+@mixin title-text($titleSize) {
+    font-size: $titleSize;
+    text-transform: uppercase;
+    color:$white;
+}
+
+@mixin graph-text($graphSize) {
+    font-size: $graphSize;
+    line-height: 2;
+    color:$light-color;
+}
+
+@mixin grid($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val,1fr));
+    gap: 2rem;
+}
+
+*{
+    font-family:'Exo',sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+    overflow-x: hidden;
+    
+    &::-webkit-scrollbar{
+        width: 1rem;
+    }
+    
+    &::-webkit-scrollbar-track{
+        background: $black;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        background: $yellow;
+        border-radius: 5rem;
+    }
+}
+
+body{
+    background: url(../img/blackwood3.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    overflow-x: hidden;
+}
+
+h1
+{
+    font-family:'Ubuntu',sans-serif;
+    font-size: 8rem;
+}
+
+section{
+    padding: 3rem 9%;
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    cursor: pointer;
+    color: $white;
+    border: $border;
+    background: no-repeat;
+    font-size: 1.9rem;
+    padding:1rem 3rem;
+    
+    &:hover{
+        color: $black;
+        background: $white;
+    }
+
+}
+
+.header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: $black;
+    padding: 3rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .icons{
+        font-size: 2.5rem;
+        cursor: pointer;
+        color:$white;
+
+        &:hover{
+            color: $yellow; 
+        }
+    }
+
+    #menu-btn{
+        display: none;
+    }
+
+    .navbar{
+        a{
+            color:$white;
+            font-size: 1.95rem;
+            margin: 0 2rem;
+
+            &:hover{
+                text-decoration: underline;
+                text-underline-offset: 0.3rem;
+                color: $yellow;
+            }
+        }
+    }
+    .space{
+            display: inline-block;
+            width: 16rem;
+        }
+        
+}
+
+.logo{
+    position:absolute;
+    top:6rem; left: 46.95%;
+    transform: translateY(-68%);
+    
+    img{
+        max-width: 7rem;
+        &:hover{
+            transform: translateY(1rem);
+        }
+    }
+}
+.search-form{
+    height: 7rem;
+    padding:0 2rem;
+    border-top: $border;
+    display: flex;
+    align-items: center;
+    background:$black;
+    position: absolute;
+    top:99%; left: 0; right: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);    
+    &.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+    input{
+        width: 100%;
+        background: none;
+        text-transform: none;
+        font-style: 1.6rem;
+        color: $white;
+    }
+}
+.fa-times{
+    transform: rotate(180deg);
+}
+
+.home{
+    margin-top: 5rem;
+    background: url(../img/homeBg.png) no-repeat;
+    background-position: center;
+    background-size: 100%;
+    	/* Make the image fully responsive */
+        .carousel-inner img {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.80;
+         }
+         p
+         {
+             @include title-text(2rem);
+         }
+         #demo
+         {
+             align-items: center;
+         }
+}
+
+.services{
+    @include grid(30rem);
+
+    .box{
+        text-align:center;
+        padding: 2rem;
+
+        i{
+            height: 4rem;
+            width: 4rem;
+            line-height: 4rem;
+            font-size: 2.7rem;
+            color: $black;
+            background: $yellow;
+            border-radius: 30%;
+            &:hover{
+                color: $white; 
+            }
+        }
+        h3{
+            padding: 1rem 0;
+            @include title-text(1.8rem);
+        }
+
+        p
+        {
+            @include graph-text(1.4rem);
+        }
+
+    }
+}
+
+#about{
+    display: inline-block;
+    align-items: center;
+    gap:3rem;
+    #time{
+        float: right;
+        text-align: right;
+        }
+        .rounded-circle{
+            float: left;
+            max-width: 32%;
+            box-shadow: 10px 10px 5px rgb(107, 105, 101);
+        }
+      
+    h1{
+        color: white;
+    }
+    h2{
+        
+        padding: 1rem 0;
+        @include title-text(5rem);
+    }
+
+    p
+    {
+        @include graph-text(1.9rem);
+    }
+  
+}
+
+.menu{
+
+    .box-container{
+       @include grid(20rem);
+ 
+       .box{
+          text-align: center;
+ 
+          &:hover img{
+             transform: translateY(1rem);
+          }
+ 
+          img{
+             height: 25rem;
+          }
+ 
+          .content{
+             padding:1rem 0;
+ 
+             .stars{
+                margin-bottom: 2rem;
+ 
+                i{
+                   font-size: 1.7rem;
+                   color:$yellow;
+                }
+             }
+ 
+             h3{
+                @include title-text(2rem);
+             }
+ 
+             .price{
+                @include grap-text(2rem);
+             }
+          }
+       }
+    }
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//media queries
+@media (max-width:1200px){
+   
+    .header{
+        padding: 3rem;
+    }
+
+    section{
+        padding: 3rem 2rem;
+    }
+    
+}
+
+@media (max-width:991px){
+    html{
+        font-size: 56%;
+    }
+    .header{
+        justify-content: flex-end; 
+        //padding: 2.5rem;
+        gap:2rem;
+        //font-size: 30%;
+
+        .logo{
+            max-width: 28%;
+            transform: translateX(0);
+            left:1.8rem;
+            top:0.5rem;
+        }
+
+        #menu-btn{
+        display: inline-block;
+       
+        }
+    
+        .navbar{
+        position: absolute;
+        top:80%; left: 0; right: 0;
+        background: $black;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);    
+        &.active{
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+        a{
+            display:inline-block;
+            margin:1.9rem 1.5rem; 
+        }
+        .space{
+            display:none;
+
+        }
+
+    }
+ }
+}
+@media (max-width:768px){
+    .home .content h3{
+       font-size: 2.5rem;
+    }
+ }
+ 
+ @media (max-width:450px){
+ 
+    html{
+       font-size: 50%;
+    }
+ 
+ }
